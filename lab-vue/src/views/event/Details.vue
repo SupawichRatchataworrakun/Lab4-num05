@@ -21,27 +21,13 @@
     </div>
   </div>
 </template>
+
 <script>
-import EventService from '@/services/EventService.js'
 export default {
-  props: ['id'],
-  data() {
-    return {
-      event: null
-    }
-  },
-  created() {
-    EventService.getEvent(this.id)
-      .then((response) => {
-        this.event = response.data
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  },
+  props: ['event'],
   computed: {
     checkid: function () {
-      var id = this.id
+      var id = this.event._id
       if (id == '5f1c59d0fa523c3aa793c0ac') {
         return true
       } else return false
