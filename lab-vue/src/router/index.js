@@ -5,16 +5,14 @@ import EventDetails from '@/views/event/Details.vue'
 import EventEdit from '@/views/event/Edit.vue'
 import EventLayout from '@/views/event/Layout.vue'
 import NotFound from '@/views/NotFound.vue'
+import nProgress from 'nprogress'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home,
-    props: (route) => ({
-      page: parseInt(route.query.page) || 0,
-      perPage: parseInt(route.query.perPage) || 10
-    })
+    props: (route) => ({ page: parseInt(route.query.page) || 1 })
   },
   {
     path: '/about',
@@ -56,6 +54,14 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+//เรียกคำสั่งมาใส่ในนี้แทน
+router.beforeEach(() => {
+  nProgress.start()
+})
+router.afterEach(() => {
+  nProgress.done()
 })
 
 export default router
