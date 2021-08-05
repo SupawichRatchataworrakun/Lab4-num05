@@ -1,7 +1,9 @@
 <template>
-  <p>Edit the event here</p>
+  <div>
+    <p>Edit the event here</p>
+    <button>EDIT ME!</button>
+  </div>
 </template>
-
 <script>
 export default {
   props: ['event']
